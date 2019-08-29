@@ -1,0 +1,16 @@
+﻿.RoslynHtmlSyntaxHighlighter {
+    font-family: Consolas;
+    font-size: 16px;
+}
+
+.RoslynHtmlSyntaxHighlighter .keyword {
+    color: #4A9AB8;
+}
+
+.RoslynHtmlSyntaxHighlighter .identifier-class {
+    color: #4EC9B0;
+}
+
+.RoslynHtmlSyntaxHighlighter .identifier-method {
+    color: #DCDCAA;
+}

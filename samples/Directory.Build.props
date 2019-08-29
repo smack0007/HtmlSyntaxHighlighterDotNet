@@ -1,0 +1,12 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <ItemGroup>
+    <ProjectReference Include="$(RepositoryRootDirectory)src\RoslynHtmlSyntaxHighlighter\RoslynHtmlSyntaxHighlighter.csproj" />
+
+    <Content Include="$(RepositoryRootDirectory)src\RoslynHtmlSyntaxHighlighter\RoslynHtmlSyntaxHighlighter.css" Link="RoslynHtmlSyntaxHighlighter.css">
+      <Visible>false</Visible>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
