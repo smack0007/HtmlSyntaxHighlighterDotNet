@@ -47,7 +47,7 @@ namespace RoslynHtmlSyntaxHighlighter
 
                 _buffer.Append($"<span class=\"");
 
-                if (token.IsKeyword())
+                if (token.IsKeyword() || token.IsContextualKeyword())
                 {
                     _buffer.Append("keyword keyword-");
                     _buffer.Append(token);
@@ -63,6 +63,14 @@ namespace RoslynHtmlSyntaxHighlighter
                     else if (token.Parent is MethodDeclarationSyntax)
                     {
                         _buffer.Append(" identifier-method");
+                    }
+                    else if (token.Parent is IdentifierNameSyntax identifierNameSyntax)
+                    {
+                        if (identifierNameSyntax.Parent is InvocationExpressionSyntax)
+                        {
+                            _buffer.Append(" identifier-method");
+                            _buffer.Append(" identifier-method-call");
+                        }
                     }
                 }
                 else
