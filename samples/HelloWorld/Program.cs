@@ -25,7 +25,8 @@ public class Program
 
   private static IEnumerable<int> Fibonacci()
   {
-    int current = 1, next = 1;
+    int current = 1;
+    int next = 1;
 
     while (true) 
     {

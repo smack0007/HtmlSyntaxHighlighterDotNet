@@ -4,13 +4,45 @@
 }
 
 .RoslynHtmlSyntaxHighlighter .keyword {
-    color: #4A9AB8;
+    color: #569CD6;
+}
+
+.RoslynHtmlSyntaxHighlighter .keyword-statement {
+    color: #D8A0DF;
+}
+
+.RoslynHtmlSyntaxHighlighter .identifier {
+    color: #9CDCFE;
 }
 
 .RoslynHtmlSyntaxHighlighter .identifier-class {
-    color: #4EC9B0;
+    color: #84D5A1;
+}
+
+.RoslynHtmlSyntaxHighlighter .identifier-generic {
+    color: #B8D7A3;
+}
+
+.RoslynHtmlSyntaxHighlighter .identifier-member-access {
+    color: #84D5A1;
+}
+
+.RoslynHtmlSyntaxHighlighter .identifier-invocation {
+    color: #DCDCAA;
 }
 
 .RoslynHtmlSyntaxHighlighter .identifier-method {
     color: #DCDCAA;
+}
+
+.RoslynHtmlSyntaxHighlighter .identifier-variable {
+    color: #9CDCFE;
+}
+
+.RoslynHtmlSyntaxHighlighter .identifier-var {
+    color: #569CD6;
+}
+
+.RoslynHtmlSyntaxHighlighter .numeric-literal {
+    color: #B8D7A3;
 }
