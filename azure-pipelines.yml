@@ -3,7 +3,11 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet build'
+  displayName: 'dotnet msbuild'
   inputs:
-    projects: HtmlSyntaxHighlighterDotNet.sln
-    arguments: '/v:d /p:Configuration=Release'
+    command: 'custom'
+    custom: 'msbuild'
+    projects: build/Build.proj
+    arguments: '-v:n'
+
+
