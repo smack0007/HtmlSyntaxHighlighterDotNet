@@ -5,26 +5,5 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
-    projects: RoslynHtmlSyntaxHighlighter.sln
+    projects: HtmlSyntaxHighlighterDotNet.sln
     arguments: '/v:d /p:Configuration=Release'
-
-#- task: DotNetCoreCLI@2
-#  displayName: 'dotnet test'
-#  inputs:
-#    command: test
-#    projects: 'tests/RoslynHtmlSyntaxHighlighter.Tests/RoslynHtmlSyntaxHighlighter.Tests.csproj'
-#    arguments: '-c Release'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet pack'
-  inputs:
-    command: pack
-    packagesToPack: src/RoslynHtmlSyntaxHighlighter/RoslynHtmlSyntaxHighlighter.csproj
-    buildProperties: 'Configuration=Release'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: RoslynHtmlSyntaxHighlighter'
-  inputs:
-    artifactName: 'RoslynHtmlSyntaxHighlighter'
-
-

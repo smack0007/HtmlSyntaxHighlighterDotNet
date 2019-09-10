@@ -9,9 +9,6 @@
 
     <CurrentYear>$([System.DateTime]::Now.ToString(yy))</CurrentYear>
     <CurrentMonth>$([System.DateTime]::Now.ToString(MM))</CurrentMonth>
-
-    <CurrentYear>$([System.DateTime]::Now.ToString(yy))</CurrentYear>
-    <CurrentMonth>$([System.DateTime]::Now.ToString(MM))</CurrentMonth>
     <PatchNumber Condition="$(PatchNumber) == ''">0</PatchNumber>
     <VersionPrefix>$(CurrentYear).$(CurrentMonth).$(PatchNumber)</VersionPrefix>
 
