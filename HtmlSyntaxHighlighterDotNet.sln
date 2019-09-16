@@ -21,6 +21,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "samples\Hello
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlSyntaxHighlighterDotNet", "src\HtmlSyntaxHighlighterDotNet\HtmlSyntaxHighlighterDotNet.csproj", "{E04FD718-0471-4F6A-AECF-B1D46420956D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{7C00D283-07F5-4848-86B9-6A85F51D24C2}"
+	ProjectSection(SolutionItems) = preProject
+		build\Build.proj = build\Build.proj
+		build\GitVersion.targets = build\GitVersion.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +70,7 @@ Global
 		{28B4479D-E694-4C90-8289-1FA71A8BFFBE} = {FD10CEE0-5289-4E79-BA21-CC69B4F52D83}
 		{225DBB62-5D6B-43D2-8409-11372B2718E7} = {28B4479D-E694-4C90-8289-1FA71A8BFFBE}
 		{E04FD718-0471-4F6A-AECF-B1D46420956D} = {E7083064-BA68-4810-BF3D-7739DB62170A}
+		{7C00D283-07F5-4848-86B9-6A85F51D24C2} = {FD10CEE0-5289-4E79-BA21-CC69B4F52D83}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AF387043-9F89-4948-B594-CB798DD12DDF}

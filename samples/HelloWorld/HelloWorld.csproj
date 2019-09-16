@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Fibonacci.cs" />
+    <None Include="Fibonacci.cs" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  
 </Project>

@@ -35,7 +35,7 @@ namespace RoslynHtmlSyntaxHighlighter
 
         public void Highlight(SyntaxNode node)
         {
-            _buffer.Append("<span class=\"RoslynHtmlSyntaxHighlighter\">");
+            _buffer.Append("<span class=\"HtmlSyntaxHighlighterDotNet\">");
             Visit(node);
             _buffer.Append("</span>");
         }
@@ -87,6 +87,13 @@ namespace RoslynHtmlSyntaxHighlighter
             _stack.Pop();
         }
 
+        public override void VisitUsingDirective(UsingDirectiveSyntax node)
+        {
+            _stack.Push(SyntaxElement.UsingDirective);
+            base.VisitUsingDirective(node);
+            _stack.Pop();
+        }
+
         public override void VisitVariableDeclaration(VariableDeclarationSyntax node)
         {
             _stack.Push(SyntaxElement.VariableDeclaration);
@@ -99,7 +106,7 @@ namespace RoslynHtmlSyntaxHighlighter
             if (token.HasLeadingTrivia)
             {
                 foreach (var trivia in token.LeadingTrivia)
-                    _buffer.Append(trivia);
+                    VisitTrivia(trivia);
             }
 
             _buffer.Append($"<span class=\"");
@@ -138,7 +145,18 @@ namespace RoslynHtmlSyntaxHighlighter
                 }
                 else if (_stack.Peek(SyntaxElement.MemberAccessExpression))
                 {
-                    _buffer.Append(" identifier-member-access");
+                    if (_stack.Peek(SyntaxElement.Invocation, 1))
+                    {
+                        _buffer.Append(" identifier-invocation");
+                    }
+                    else
+                    {
+                        _buffer.Append(" identifier-member-access");
+                    }
+                }
+                else if (_stack.Peek(SyntaxElement.UsingDirective))
+                {
+                    _buffer.Append(" identifier-using-directive");
                 }
                 else if (_stack.Peek(SyntaxElement.VariableDeclaration))
                 {
@@ -166,7 +184,26 @@ namespace RoslynHtmlSyntaxHighlighter
             if (token.HasTrailingTrivia)
             {
                 foreach (var trivia in token.TrailingTrivia)
-                    _buffer.Append(trivia);
+                    VisitTrivia(trivia);
+            }
+        }
+
+        public override void VisitTrivia(SyntaxTrivia trivia)
+        {
+            bool closeSpan = false;
+
+            if (trivia.IsKind(SyntaxKind.SingleLineCommentTrivia) ||
+                trivia.IsKind(SyntaxKind.MultiLineCommentTrivia))
+            {
+                _buffer.Append("<span class=\"comment\">");
+                closeSpan = true;
+            }
+
+            _buffer.Append(trivia);
+
+            if (closeSpan)
+            {
+                _buffer.Append("</span>");
             }
         }
     }

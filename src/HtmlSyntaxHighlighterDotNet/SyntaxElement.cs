@@ -8,6 +8,7 @@
         Invocation,
         MethodDeclaration,
         MemberAccessExpression,
+        UsingDirective,
         VariableDeclaration,
     }
 }

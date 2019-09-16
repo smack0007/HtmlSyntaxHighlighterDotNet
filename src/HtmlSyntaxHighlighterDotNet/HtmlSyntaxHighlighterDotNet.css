@@ -1,48 +1,56 @@
-﻿.RoslynHtmlSyntaxHighlighter {
+﻿.HtmlSyntaxHighlighterDotNet {
     font-family: Consolas;
     font-size: 16px;
 }
 
-.RoslynHtmlSyntaxHighlighter .keyword {
+.HtmlSyntaxHighlighterDotNet .comment {
+    color: #57A64A;
+}
+
+.HtmlSyntaxHighlighterDotNet .keyword {
     color: #569CD6;
 }
 
-.RoslynHtmlSyntaxHighlighter .keyword-statement {
+.HtmlSyntaxHighlighterDotNet .keyword-statement {
     color: #D8A0DF;
 }
 
-.RoslynHtmlSyntaxHighlighter .identifier {
+.HtmlSyntaxHighlighterDotNet .identifier {
     color: #9CDCFE;
 }
 
-.RoslynHtmlSyntaxHighlighter .identifier-class {
+.HtmlSyntaxHighlighterDotNet .identifier-class {
     color: #84D5A1;
 }
 
-.RoslynHtmlSyntaxHighlighter .identifier-generic {
+.HtmlSyntaxHighlighterDotNet .identifier-generic {
     color: #B8D7A3;
 }
 
-.RoslynHtmlSyntaxHighlighter .identifier-member-access {
+.HtmlSyntaxHighlighterDotNet .identifier-member-access {
     color: #84D5A1;
 }
 
-.RoslynHtmlSyntaxHighlighter .identifier-invocation {
+.HtmlSyntaxHighlighterDotNet .identifier-invocation {
     color: #DCDCAA;
 }
 
-.RoslynHtmlSyntaxHighlighter .identifier-method {
+.HtmlSyntaxHighlighterDotNet .identifier-method {
     color: #DCDCAA;
 }
 
-.RoslynHtmlSyntaxHighlighter .identifier-variable {
+.HtmlSyntaxHighlighterDotNet .identifier-using-directive {
+    color: #DCDCDC;
+}
+
+.HtmlSyntaxHighlighterDotNet .identifier-variable {
     color: #9CDCFE;
 }
 
-.RoslynHtmlSyntaxHighlighter .identifier-var {
+.HtmlSyntaxHighlighterDotNet .identifier-var {
     color: #569CD6;
 }
 
-.RoslynHtmlSyntaxHighlighter .numeric-literal {
+.HtmlSyntaxHighlighterDotNet .numeric-literal {
     color: #B8D7A3;
 }
