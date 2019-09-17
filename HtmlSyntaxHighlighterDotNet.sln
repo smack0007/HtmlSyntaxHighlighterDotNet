@@ -5,6 +5,7 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RosolynHtmlSyntaxHighlighter", "RosolynHtmlSyntaxHighlighter", "{FD10CEE0-5289-4E79-BA21-CC69B4F52D83}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
 		Directory.Build.props = Directory.Build.props
 		License.txt = License.txt

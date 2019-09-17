@@ -10,6 +10,5 @@
         MethodDeclaration,
         MemberAccessExpression,
         UsingDirective,
-        VariableDeclaration,
     }
 }

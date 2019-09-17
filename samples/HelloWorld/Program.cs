@@ -22,7 +22,7 @@ $@"<!DOCTYPE html>
                 color: white;
             }}
 
-{ HtmlSyntaxHighlighter.GetCssString() }
+{ HtmlSyntaxHighlighter.GetCssStyles() }
         </style>
     </head>
     <body>

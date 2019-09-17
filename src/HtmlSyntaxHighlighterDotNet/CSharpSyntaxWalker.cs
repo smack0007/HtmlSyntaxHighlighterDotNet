@@ -35,7 +35,7 @@ namespace HtmlSyntaxHighlighterDotNet
 
         public void Highlight(SyntaxNode node)
         {
-            _buffer.Append("<span class=\"HtmlSyntaxHighlighterDotNet\">");
+            _buffer.Append($"<span class=\"{Css.RootClass}\">");
             Visit(node);
             _buffer.Append("</span>");
         }
@@ -101,13 +101,6 @@ namespace HtmlSyntaxHighlighterDotNet
             _stack.Pop();
         }
 
-        public override void VisitVariableDeclaration(VariableDeclarationSyntax node)
-        {
-            _stack.Push(SyntaxElement.VariableDeclaration);
-            base.VisitVariableDeclaration(node);
-            _stack.Pop();
-        }
-
         public override void VisitToken(SyntaxToken token)
         {
             if (token.HasLeadingTrivia)
@@ -120,77 +113,99 @@ namespace HtmlSyntaxHighlighterDotNet
 
             if (token.IsKeyword() || token.IsContextualKeyword())
             {
-                _buffer.Append("keyword");
+                _buffer.Append(Css.KeywordClass);
 
                 if (s_statementKeywords.Contains(token.ValueText))
                 {
-                    _buffer.Append(" keyword-statement");
-                }
-
-                _buffer.Append(" keyword-");
-                _buffer.Append(token);                
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.KeywordClass);
+                    _buffer.Append(Css.ClassExtender);
+                    _buffer.Append(Css.StatementClass);
+                }              
             }
             else if (token.IsKind(SyntaxKind.IdentifierToken))
             {
-                _buffer.Append("identifier");
+                _buffer.Append(Css.IdentifierClass);
 
                 if (_stack.Peek(SyntaxElement.ClassDeclaration))
                 {
-                    _buffer.Append(" identifier-class");
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.IdentifierClass);
+                    _buffer.Append(Css.ClassExtender);
+                    _buffer.Append(Css.ClassClass);
                 }
                 else if (_stack.Peek(SyntaxElement.GenericName))
                 {
-                    _buffer.Append(" identifier-generic");
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.IdentifierClass);
+                    _buffer.Append(Css.ClassExtender);
+                    _buffer.Append(Css.GenericClass);
                 }
                 else if (_stack.Peek(SyntaxElement.Invocation))
                 {
-                    _buffer.Append(" identifier-invocation");
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.IdentifierClass);
+                    _buffer.Append(Css.ClassExtender);
+                    _buffer.Append(Css.InvocationClass);
                 }
                 else if (_stack.Peek(SyntaxElement.MethodDeclaration))
                 {
-                    _buffer.Append(" identifier-method");
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.IdentifierClass);
+                    _buffer.Append(Css.ClassExtender);
+                    _buffer.Append(Css.MethodClass);
                 }
                 else if (_stack.Peek(SyntaxElement.MemberAccessExpression))
                 {
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.IdentifierClass);
+                    _buffer.Append(Css.ClassExtender);
+
                     if (_stack.Peek(SyntaxElement.Invocation, 1))
                     {
-                        _buffer.Append(" identifier-invocation");
+                        _buffer.Append(Css.InvocationClass);
                     }
                     else
                     {
-                        _buffer.Append(" identifier-member-access");
+                        _buffer.Append(Css.MemberAccessClass);
                     }
                 }
                 else if (_stack.Peek(SyntaxElement.UsingDirective))
                 {
-                    _buffer.Append(" identifier-using-directive");
-                }
-                else if (_stack.Peek(SyntaxElement.VariableDeclaration))
-                {
-                    _buffer.Append(" identifier-variable");
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.IdentifierClass);
+                    _buffer.Append(Css.ClassExtender);
+                    _buffer.Append(Css.UsingDirectiveClass);
                 }
                 else if (token.ValueText == "var")
                 {
-                    _buffer.Append(" identifier-var");
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.IdentifierClass);
+                    _buffer.Append(Css.ClassExtender);
+                    _buffer.Append(Css.VarClass);
                 }
             }
             else if (token.IsKind(SyntaxKind.NumericLiteralToken))
             {
-                _buffer.Append("numeric numeric-literal");
+                _buffer.Append(Css.NumericClass);
             }
             else if (token.IsKind(SyntaxKind.StringLiteralToken))
             {
-                _buffer.Append("string string-literal");
+                _buffer.Append(Css.StringClass);
             }
             else if (token.IsKind(SyntaxKind.InterpolatedStringStartToken) ||
                      token.IsKind(SyntaxKind.InterpolatedStringEndToken) ||
                      token.IsKind(SyntaxKind.InterpolatedStringTextToken))
             {
-                _buffer.Append("string string-interpolated");
+                _buffer.Append(Css.StringClass);
+                _buffer.Append(Css.ClassSeperator);
+                _buffer.Append(Css.StringClass);
+                _buffer.Append(Css.ClassExtender);
+                _buffer.Append(Css.InterpolatedClass);
             }
             else
             {
-                _buffer.Append("token");
+                _buffer.Append(Css.TokenClass);
             }
 
                 
@@ -212,7 +227,9 @@ namespace HtmlSyntaxHighlighterDotNet
             if (trivia.IsKind(SyntaxKind.SingleLineCommentTrivia) ||
                 trivia.IsKind(SyntaxKind.MultiLineCommentTrivia))
             {
-                _buffer.Append("<span class=\"comment\">");
+                _buffer.Append("<span class=\"");
+                _buffer.Append(Css.CommentClass);
+                _buffer.Append("\">");
                 closeSpan = true;
             }
 
