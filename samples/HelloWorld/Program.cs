@@ -1,6 +1,5 @@
-﻿using System;
-using System.IO;
-using RoslynHtmlSyntaxHighlighter;
+﻿using System.IO;
+using HtmlSyntaxHighlighterDotNet;
 
 namespace HelloWorld
 {
@@ -16,13 +15,14 @@ namespace HelloWorld
 $@"<!DOCTYPE html>
 <html>
     <head>
-        <link rel=""stylesheet"" type=""text/css"" href=""RoslynHtmlSyntaxHighlighter.css"">
         <style>
             code {{
                 display: block;
                 background-color: #1E1E1E;
                 color: white;
             }}
+
+{ HtmlSyntaxHighlighter.GetCssString() }
         </style>
     </head>
     <body>

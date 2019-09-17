@@ -16,6 +16,8 @@ public class Program
         {
             System.Console.WriteLine(i);
         }
+
+        Console.WriteLine("Done.");
     }
 
     private static IEnumerable<int> Fibonacci(/* void */)

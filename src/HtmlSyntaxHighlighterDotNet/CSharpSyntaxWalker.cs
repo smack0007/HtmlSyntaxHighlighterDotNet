@@ -4,7 +4,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RoslynHtmlSyntaxHighlighter
+namespace HtmlSyntaxHighlighterDotNet
 {
     internal class CSharpSyntaxWalker : Microsoft.CodeAnalysis.CSharp.CSharpSyntaxWalker
     {

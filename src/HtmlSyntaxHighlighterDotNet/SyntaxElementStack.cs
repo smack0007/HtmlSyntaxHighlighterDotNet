@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RoslynHtmlSyntaxHighlighter
+namespace HtmlSyntaxHighlighterDotNet
 {
     internal class SyntaxElementStack
     {

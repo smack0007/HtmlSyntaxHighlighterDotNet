@@ -1,10 +1,11 @@
-﻿using System;
+﻿using System.IO;
+using System.Reflection;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RoslynHtmlSyntaxHighlighter
+namespace HtmlSyntaxHighlighterDotNet
 {
-    public partial class HtmlSyntaxHighlighter
+    public static class HtmlSyntaxHighlighter
     {
         public static string TransformCSharp(string source)
         {
@@ -14,6 +15,20 @@ namespace RoslynHtmlSyntaxHighlighter
             syntaxWalker.Highlight((CompilationUnitSyntax)tree.GetRoot());
 
             return syntaxWalker.ToString();
+        }
+
+        public static Stream GetCssStream()
+        {
+            var ns = typeof(HtmlSyntaxHighlighter).Namespace;
+            return Assembly.GetExecutingAssembly().GetManifestResourceStream($"{ns}.{ns}.css");
+        }
+
+        public static string GetCssString()
+        {
+            var stream = GetCssStream();
+
+            using (var sr = new StreamReader(stream))
+                return sr.ReadToEnd();
         }
     }
 }

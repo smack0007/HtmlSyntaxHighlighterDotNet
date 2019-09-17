@@ -1,4 +1,4 @@
-﻿namespace RoslynHtmlSyntaxHighlighter
+﻿namespace HtmlSyntaxHighlighterDotNet
 {
     internal enum SyntaxElement
     {
