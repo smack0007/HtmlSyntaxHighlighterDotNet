@@ -1,2 +1,2 @@
 @ECHO OFF
-dotnet msbuild %~dp0build\Build.proj /t:Build
+dotnet msbuild %~dp0build\Build.proj -nologo /t:Build
