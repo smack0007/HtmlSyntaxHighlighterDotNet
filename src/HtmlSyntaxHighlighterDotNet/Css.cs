@@ -69,7 +69,7 @@ namespace HtmlSyntaxHighlighterDotNet
                 }
             },
             {
-                KeywordClass + ClassExtender + StatementClass,
+                KeywordClass + ClassOperator + StatementClass,
                 new Dictionary<string, string>()
                 {
                     { "color", "#D8A0DF" }
@@ -83,49 +83,49 @@ namespace HtmlSyntaxHighlighterDotNet
                 }
             },
             {
-                IdentifierClass + ClassExtender + ClassClass,
+                IdentifierClass + ClassOperator + ClassClass,
                 new Dictionary<string, string>()
                 {
                     { "color", "#84D5A1" }
                 }
             },
             {
-                IdentifierClass + ClassExtender + GenericClass,
+                IdentifierClass + ClassOperator + GenericClass,
                 new Dictionary<string, string>()
                 {
                     { "color", "#B8D7A3" }
                 }
             },
             {
-                IdentifierClass + ClassExtender + MemberAccessClass,
+                IdentifierClass + ClassOperator + MemberAccessClass,
                 new Dictionary<string, string>()
                 {
                     { "color", "#84D5A1" }
                 }
             },
             {
-                IdentifierClass + ClassExtender + InvocationClass,
+                IdentifierClass + ClassOperator + InvocationClass,
                 new Dictionary<string, string>()
                 {
                     { "color", "#DCDCAA" }
                 }
             },
             {
-                IdentifierClass + ClassExtender + MethodClass,
+                IdentifierClass + ClassOperator + MethodClass,
                 new Dictionary<string, string>()
                 {
                     { "color", "#DCDCAA" }
                 }
             },
             {
-                IdentifierClass + ClassExtender + UsingDirectiveClass,
+                IdentifierClass + ClassOperator + UsingDirectiveClass,
                 new Dictionary<string, string>()
                 {
                     { "color", "#DCDCDC" }
                 }
             },
             {
-                IdentifierClass + ClassExtender + VarClass,
+                IdentifierClass + ClassOperator + VarClass,
                 new Dictionary<string, string>()
                 {
                     { "color", "#569CD6" }

@@ -118,8 +118,6 @@ namespace HtmlSyntaxHighlighterDotNet
                 if (s_statementKeywords.Contains(token.ValueText))
                 {
                     _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.KeywordClass);
-                    _buffer.Append(Css.ClassExtender);
                     _buffer.Append(Css.StatementClass);
                 }              
             }
@@ -130,36 +128,26 @@ namespace HtmlSyntaxHighlighterDotNet
                 if (_stack.Peek(SyntaxElement.ClassDeclaration))
                 {
                     _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.IdentifierClass);
-                    _buffer.Append(Css.ClassExtender);
                     _buffer.Append(Css.ClassClass);
                 }
                 else if (_stack.Peek(SyntaxElement.GenericName))
                 {
                     _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.IdentifierClass);
-                    _buffer.Append(Css.ClassExtender);
                     _buffer.Append(Css.GenericClass);
                 }
                 else if (_stack.Peek(SyntaxElement.Invocation))
                 {
                     _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.IdentifierClass);
-                    _buffer.Append(Css.ClassExtender);
                     _buffer.Append(Css.InvocationClass);
                 }
                 else if (_stack.Peek(SyntaxElement.MethodDeclaration))
                 {
                     _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.IdentifierClass);
-                    _buffer.Append(Css.ClassExtender);
                     _buffer.Append(Css.MethodClass);
                 }
                 else if (_stack.Peek(SyntaxElement.MemberAccessExpression))
                 {
                     _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.IdentifierClass);
-                    _buffer.Append(Css.ClassExtender);
 
                     if (_stack.Peek(SyntaxElement.Invocation, 1))
                     {
@@ -173,15 +161,11 @@ namespace HtmlSyntaxHighlighterDotNet
                 else if (_stack.Peek(SyntaxElement.UsingDirective))
                 {
                     _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.IdentifierClass);
-                    _buffer.Append(Css.ClassExtender);
                     _buffer.Append(Css.UsingDirectiveClass);
                 }
                 else if (token.ValueText == "var")
                 {
                     _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.IdentifierClass);
-                    _buffer.Append(Css.ClassExtender);
                     _buffer.Append(Css.VarClass);
                 }
             }
@@ -199,8 +183,6 @@ namespace HtmlSyntaxHighlighterDotNet
             {
                 _buffer.Append(Css.StringClass);
                 _buffer.Append(Css.ClassSeperator);
-                _buffer.Append(Css.StringClass);
-                _buffer.Append(Css.ClassExtender);
                 _buffer.Append(Css.InterpolatedClass);
             }
             else
