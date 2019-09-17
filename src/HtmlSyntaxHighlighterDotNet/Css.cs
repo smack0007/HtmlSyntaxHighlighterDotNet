@@ -10,8 +10,6 @@ namespace HtmlSyntaxHighlighterDotNet
 
         public const string ClassOperator = ".";
 
-        public const string ClassExtender = "-";
-
         public const string RootClass = "HtmlSyntaxHighlighterDotNet";
 
         public const string ClassClass = "cl";

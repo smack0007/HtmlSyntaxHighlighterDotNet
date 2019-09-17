@@ -15,9 +15,6 @@ namespace HtmlSyntaxHighlighterDotNet
             return syntaxWalker.ToString();
         }
 
-        public static string GetCssStyles()
-        {
-            return Css.GetStyles();
-        }
+        public static string GetCssStyles() => Css.GetStyles();
     }
 }

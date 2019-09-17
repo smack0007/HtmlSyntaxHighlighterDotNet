@@ -3,10 +3,5 @@
 
   <ItemGroup>
     <ProjectReference Include="$(RepositoryRootDirectory)src\HtmlSyntaxHighlighterDotNet\HtmlSyntaxHighlighterDotNet.csproj" />
-
-    <Content Include="$(RepositoryRootDirectory)src\HtmlSyntaxHighlighterDotNet\HtmlSyntaxHighlighterDotNet.css" Link="RoslynHtmlSyntaxHighlighter.css">
-      <Visible>false</Visible>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 </Project>
