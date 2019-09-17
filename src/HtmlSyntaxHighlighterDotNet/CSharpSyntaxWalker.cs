@@ -66,6 +66,13 @@ namespace HtmlSyntaxHighlighterDotNet
             _stack.Pop();
         }
 
+        public override void VisitInterpolation(InterpolationSyntax node)
+        {
+            _stack.Push(SyntaxElement.Interpolation);
+            base.VisitInterpolation(node);
+            _stack.Pop();
+        }
+
         public override void VisitInvocationExpression(InvocationExpressionSyntax node)
         {
             _stack.Push(SyntaxElement.Invocation);
@@ -169,7 +176,17 @@ namespace HtmlSyntaxHighlighterDotNet
             }
             else if (token.IsKind(SyntaxKind.NumericLiteralToken))
             {
-                _buffer.Append("numeric-literal");
+                _buffer.Append("numeric numeric-literal");
+            }
+            else if (token.IsKind(SyntaxKind.StringLiteralToken))
+            {
+                _buffer.Append("string string-literal");
+            }
+            else if (token.IsKind(SyntaxKind.InterpolatedStringStartToken) ||
+                     token.IsKind(SyntaxKind.InterpolatedStringEndToken) ||
+                     token.IsKind(SyntaxKind.InterpolatedStringTextToken))
+            {
+                _buffer.Append("string string-interpolated");
             }
             else
             {

@@ -51,6 +51,10 @@
     color: #569CD6;
 }
 
-.HtmlSyntaxHighlighterDotNet .numeric-literal {
+.HtmlSyntaxHighlighterDotNet .numeric {
     color: #B8D7A3;
+}
+
+.HtmlSyntaxHighlighterDotNet .string {
+    color: #D69D85;
 }

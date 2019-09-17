@@ -5,6 +5,7 @@
         Block,
         ClassDeclaration,
         GenericName,
+        Interpolation,
         Invocation,
         MethodDeclaration,
         MemberAccessExpression,

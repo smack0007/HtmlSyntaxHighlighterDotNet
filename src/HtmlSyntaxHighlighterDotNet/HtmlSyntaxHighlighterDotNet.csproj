@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="HtmlSyntaxHighlighterDotNet.css" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="HtmlSyntaxHighlighterDotNet.css" />
   </ItemGroup>
 

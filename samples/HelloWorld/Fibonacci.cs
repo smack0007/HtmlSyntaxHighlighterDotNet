@@ -17,7 +17,8 @@ public class Program
             System.Console.WriteLine(i);
         }
 
-        Console.WriteLine("Done.");
+        bool condition = true;
+        Console.WriteLine($"Done is {condition}.");
     }
 
     private static IEnumerable<int> Fibonacci(/* void */)
