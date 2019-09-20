@@ -30,6 +30,8 @@ namespace HtmlSyntaxHighlighterDotNet
 
         public const string MethodClass = "m";
 
+        public const string NamespaceClass = "ns";
+
         public const string NumericClass = "n";
 
         public const string StatementClass = "sta";
@@ -113,6 +115,13 @@ namespace HtmlSyntaxHighlighterDotNet
                 new Dictionary<string, string>()
                 {
                     { "color", "#DCDCAA" }
+                }
+            },
+            {
+                IdentifierClass + ClassOperator + NamespaceClass,
+                new Dictionary<string, string>()
+                {
+                    { "color", "#DCDCDC" }
                 }
             },
             {

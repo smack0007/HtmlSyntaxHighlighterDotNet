@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Reflection;
 using HtmlSyntaxHighlighterDotNet;
 
 namespace HelloWorld
@@ -7,11 +8,15 @@ namespace HelloWorld
     {
         public static void Main(string[] args)
         {
-            var source = File.ReadAllText("Fibonacci.cs");
+            var samplesPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "samples");
 
-            var syntaxHtml = HtmlSyntaxHighlighter.TransformCSharp(source);
+            foreach (var file in Directory.EnumerateFiles(samplesPath, "*.cs", SearchOption.TopDirectoryOnly))
+            {
+                var source = File.ReadAllText(file);
 
-            var html =
+                var syntaxHtml = HtmlSyntaxHighlighter.TransformCSharp(source);
+
+                var html =
 $@"<!DOCTYPE html>
 <html>
     <head>
@@ -32,7 +37,8 @@ $@"<!DOCTYPE html>
     </body>
 </html>";
 
-            File.WriteAllText("index.html", html);
+                File.WriteAllText(Path.Combine(samplesPath, Path.GetFileNameWithoutExtension(file) + ".html"), html);
+            }
         }
     }
 }

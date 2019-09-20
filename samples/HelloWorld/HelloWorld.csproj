@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Fibonacci.cs" />
-    <None Include="Fibonacci.cs" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Remove="samples\*" />
+    <None Include="samples\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   
 </Project>

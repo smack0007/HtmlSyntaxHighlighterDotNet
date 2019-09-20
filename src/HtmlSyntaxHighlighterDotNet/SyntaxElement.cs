@@ -9,6 +9,7 @@
         Invocation,
         MethodDeclaration,
         MemberAccessExpression,
+        NamespaceDeclaration,
         UsingDirective,
     }
 }

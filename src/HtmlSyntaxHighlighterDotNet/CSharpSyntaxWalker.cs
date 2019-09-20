@@ -94,6 +94,13 @@ namespace HtmlSyntaxHighlighterDotNet
             _stack.Pop();
         }
 
+        public override void VisitNamespaceDeclaration(NamespaceDeclarationSyntax node)
+        {
+            _stack.Push(SyntaxElement.NamespaceDeclaration);
+            base.VisitNamespaceDeclaration(node);
+            _stack.Pop();
+        }
+
         public override void VisitUsingDirective(UsingDirectiveSyntax node)
         {
             _stack.Push(SyntaxElement.UsingDirective);
@@ -157,6 +164,11 @@ namespace HtmlSyntaxHighlighterDotNet
                     {
                         _buffer.Append(Css.MemberAccessClass);
                     }
+                }
+                else if (_stack.Peek(SyntaxElement.NamespaceDeclaration))
+                {
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.NamespaceClass);
                 }
                 else if (_stack.Peek(SyntaxElement.UsingDirective))
                 {
