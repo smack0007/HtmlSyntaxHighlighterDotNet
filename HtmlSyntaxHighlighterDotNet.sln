@@ -3,10 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RosolynHtmlSyntaxHighlighter", "RosolynHtmlSyntaxHighlighter", "{FD10CEE0-5289-4E79-BA21-CC69B4F52D83}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HtmlSyntaxHighlighterDotNet", "HtmlSyntaxHighlighterDotNet", "{FD10CEE0-5289-4E79-BA21-CC69B4F52D83}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		azure-pipelines.yml = azure-pipelines.yml
 		Directory.Build.props = Directory.Build.props
 		License.txt = License.txt
 	EndProjectSection
@@ -26,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{7C00D283
 	ProjectSection(SolutionItems) = preProject
 		build\Build.proj = build\Build.proj
 		build\GitVersion.targets = build\GitVersion.targets
+		build\Project.props = build\Project.props
 	EndProjectSection
 EndProject
 Global
