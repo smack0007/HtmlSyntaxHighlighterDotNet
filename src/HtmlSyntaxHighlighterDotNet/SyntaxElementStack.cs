@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace HtmlSyntaxHighlighterDotNet
 {
@@ -19,5 +20,7 @@ namespace HtmlSyntaxHighlighterDotNet
         {
             return _stack.Count > index && _stack[_stack.Count - index - 1] == element;
         }
+
+        public bool Contains(SyntaxElement element) => _stack.Any(x => x == element);
     }
 }

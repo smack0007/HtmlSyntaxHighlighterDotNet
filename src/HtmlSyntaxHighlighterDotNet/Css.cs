@@ -12,11 +12,7 @@ namespace HtmlSyntaxHighlighterDotNet
 
         public const string RootClass = "HtmlSyntaxHighlighterDotNet";
 
-        public const string ClassClass = "cl";
-
         public const string CommentClass = "co";
-
-        public const string GenericClass = "g";
 
         public const string IdentifierClass = "id";
 
@@ -25,8 +21,6 @@ namespace HtmlSyntaxHighlighterDotNet
         public const string InvocationClass = "inv";
 
         public const string KeywordClass = "k";
-
-        public const string MemberAccessClass = "ma";
 
         public const string MethodClass = "m";
 
@@ -39,6 +33,8 @@ namespace HtmlSyntaxHighlighterDotNet
         public const string StringClass = "str";
 
         public const string TokenClass = "t";
+
+        public const string TypeClass = "ty";
 
         public const string UsingDirectiveClass = "u";
 
@@ -72,7 +68,7 @@ namespace HtmlSyntaxHighlighterDotNet
                 KeywordClass + ClassOperator + StatementClass,
                 new Dictionary<string, string>()
                 {
-                    { "color", "#D8A0DF" }
+                    { "color", "#C586C0" }
                 }
             },
             {
@@ -83,24 +79,10 @@ namespace HtmlSyntaxHighlighterDotNet
                 }
             },
             {
-                IdentifierClass + ClassOperator + ClassClass,
+                IdentifierClass + ClassOperator + TypeClass,
                 new Dictionary<string, string>()
                 {
-                    { "color", "#84D5A1" }
-                }
-            },
-            {
-                IdentifierClass + ClassOperator + GenericClass,
-                new Dictionary<string, string>()
-                {
-                    { "color", "#B8D7A3" }
-                }
-            },
-            {
-                IdentifierClass + ClassOperator + MemberAccessClass,
-                new Dictionary<string, string>()
-                {
-                    { "color", "#84D5A1" }
+                    { "color", "#4EC9B0" }
                 }
             },
             {
@@ -121,14 +103,14 @@ namespace HtmlSyntaxHighlighterDotNet
                 IdentifierClass + ClassOperator + NamespaceClass,
                 new Dictionary<string, string>()
                 {
-                    { "color", "#DCDCDC" }
+                    { "color", "#4EC9B0" }
                 }
             },
             {
                 IdentifierClass + ClassOperator + UsingDirectiveClass,
                 new Dictionary<string, string>()
                 {
-                    { "color", "#DCDCDC" }
+                    { "color", "#4EC9B0" }
                 }
             },
             {

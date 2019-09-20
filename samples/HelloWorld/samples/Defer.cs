@@ -3,7 +3,12 @@ using System.Collections.Generic;
 
 namespace Defer
 {
-    class DeferredActions : IDisposable
+    class Base
+    {
+
+    }
+
+    class DeferredActions : Base, IDisposable
     {
         private List<Action> _actions = new List<Action>();
 

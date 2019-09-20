@@ -18,6 +18,7 @@ namespace HtmlSyntaxHighlighterDotNet
             "return",
             "switch",
             "yield",
+            "using",
             "while",
         };
 
@@ -40,6 +41,13 @@ namespace HtmlSyntaxHighlighterDotNet
             _buffer.Append("</span>");
         }
 
+        public override void VisitArgument(ArgumentSyntax node)
+        {
+            _stack.Push(SyntaxElement.Argument);
+            base.VisitArgument(node);
+            _stack.Pop();
+        }
+
         public override void VisitBlock(BlockSyntax node)
         {
             _stack.Push(SyntaxElement.Block);
@@ -54,15 +62,31 @@ namespace HtmlSyntaxHighlighterDotNet
             _stack.Pop();
         }
 
-        public override void VisitForEachStatement(ForEachStatementSyntax node)
+        public override void VisitExplicitInterfaceSpecifier(ExplicitInterfaceSpecifierSyntax node)
         {
-            base.VisitForEachStatement(node);
+            _stack.Push(SyntaxElement.ExplicitInterfaceSpecifier);
+            base.VisitExplicitInterfaceSpecifier(node);
+            _stack.Pop();
+        }
+
+        public override void VisitFieldDeclaration(FieldDeclarationSyntax node)
+        {
+            _stack.Push(SyntaxElement.FieldDeclaration);
+            base.VisitFieldDeclaration(node);
+            _stack.Pop();
         }
 
         public override void VisitGenericName(GenericNameSyntax node)
         {
             _stack.Push(SyntaxElement.GenericName);
             base.VisitGenericName(node);
+            _stack.Pop();
+        }
+
+        public override void VisitIdentifierName(IdentifierNameSyntax node)
+        {
+            _stack.Push(SyntaxElement.IdentifierName);
+            base.VisitIdentifierName(node);
             _stack.Pop();
         }
 
@@ -101,10 +125,38 @@ namespace HtmlSyntaxHighlighterDotNet
             _stack.Pop();
         }
 
+        public override void VisitObjectCreationExpression(ObjectCreationExpressionSyntax node)
+        {
+            _stack.Push(SyntaxElement.ObjectCreationExpression);
+            base.VisitObjectCreationExpression(node);
+            _stack.Pop();
+        }
+
+        public override void VisitParameter(ParameterSyntax node)
+        {
+            _stack.Push(SyntaxElement.Parameter);
+            base.VisitParameter(node);
+            _stack.Pop();
+        }
+
+        public override void VisitPropertyDeclaration(PropertyDeclarationSyntax node)
+        {
+            _stack.Push(SyntaxElement.PropertyDeclaration);
+            base.VisitPropertyDeclaration(node);
+            _stack.Pop();
+        }
+
         public override void VisitUsingDirective(UsingDirectiveSyntax node)
         {
             _stack.Push(SyntaxElement.UsingDirective);
             base.VisitUsingDirective(node);
+            _stack.Pop();
+        }
+
+        public override void VisitVariableDeclarator(VariableDeclaratorSyntax node)
+        {
+            _stack.Push(SyntaxElement.VariableDeclarator);
+            base.VisitVariableDeclarator(node);
             _stack.Pop();
         }
 
@@ -132,45 +184,44 @@ namespace HtmlSyntaxHighlighterDotNet
             {
                 _buffer.Append(Css.IdentifierClass);
 
-                if (_stack.Peek(SyntaxElement.ClassDeclaration))
-                {
-                    _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.ClassClass);
-                }
-                else if (_stack.Peek(SyntaxElement.GenericName))
-                {
-                    _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.GenericClass);
-                }
-                else if (_stack.Peek(SyntaxElement.Invocation))
-                {
-                    _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.InvocationClass);
-                }
-                else if (_stack.Peek(SyntaxElement.MethodDeclaration))
+                if (_stack.Peek(SyntaxElement.MethodDeclaration))
                 {
                     _buffer.Append(Css.ClassSeperator);
                     _buffer.Append(Css.MethodClass);
                 }
-                else if (_stack.Peek(SyntaxElement.MemberAccessExpression))
+                else if (_stack.Peek(SyntaxElement.ClassDeclaration, 1) ||
+                         _stack.Peek(SyntaxElement.ExplicitInterfaceSpecifier, 1) ||
+                         _stack.Peek(SyntaxElement.ObjectCreationExpression, 1) ||
+                         _stack.Peek(SyntaxElement.Parameter, 1))
                 {
                     _buffer.Append(Css.ClassSeperator);
-
-                    if (_stack.Peek(SyntaxElement.Invocation, 1))
+                    _buffer.Append(Css.TypeClass);
+                }
+                else if (_stack.Contains(SyntaxElement.GenericName))
+                {
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.TypeClass);
+                }
+                else if (_stack.Peek(SyntaxElement.Invocation, 1))
+                {
+                    _buffer.Append(Css.ClassSeperator);
+                    _buffer.Append(Css.InvocationClass);
+                }
+                else if (_stack.Peek(SyntaxElement.MemberAccessExpression, 1))
+                {
+                    if (_stack.Peek(SyntaxElement.Invocation, 2) &&
+                        !token.GetNextToken().IsKind(SyntaxKind.DotToken))
                     {
+                        _buffer.Append(Css.ClassSeperator);
                         _buffer.Append(Css.InvocationClass);
                     }
-                    else
-                    {
-                        _buffer.Append(Css.MemberAccessClass);
-                    }
                 }
-                else if (_stack.Peek(SyntaxElement.NamespaceDeclaration))
+                else if (_stack.Peek(SyntaxElement.NamespaceDeclaration, 1))
                 {
                     _buffer.Append(Css.ClassSeperator);
                     _buffer.Append(Css.NamespaceClass);
                 }
-                else if (_stack.Peek(SyntaxElement.UsingDirective))
+                else if (_stack.Peek(SyntaxElement.UsingDirective, 1))
                 {
                     _buffer.Append(Css.ClassSeperator);
                     _buffer.Append(Css.UsingDirectiveClass);
