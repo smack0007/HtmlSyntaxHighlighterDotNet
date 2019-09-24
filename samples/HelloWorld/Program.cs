@@ -6,9 +6,11 @@ namespace HelloWorld
 {
     class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            var samplesPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "samples");
+            var assemblyLocation = Assembly.GetEntryAssembly()?.Location ?? "";
+            var assemblyDirectoryName = Path.GetDirectoryName(assemblyLocation) ?? "";
+            var samplesPath = Path.Combine(assemblyDirectoryName, "samples");
 
             foreach (var file in Directory.EnumerateFiles(samplesPath, "*.cs", SearchOption.TopDirectoryOnly))
             {
