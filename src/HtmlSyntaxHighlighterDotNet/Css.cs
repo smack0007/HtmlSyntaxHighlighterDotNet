@@ -46,8 +46,12 @@ namespace HtmlSyntaxHighlighterDotNet
                 "",
                 new Dictionary<string, string>()
                 {
-                    { "font-family", "Consolas" },
-                    { "font-size", "16px" }
+                    { "background-color", "rgb(48, 48, 48)" },
+                    { "color", "white" },
+                    { "font-family", "consolas, monospace" },
+                    { "font-size", "18px" },
+                    { "font-weight", "normal" },
+                    { "overflow", "auto" }
                 }
             },
             {

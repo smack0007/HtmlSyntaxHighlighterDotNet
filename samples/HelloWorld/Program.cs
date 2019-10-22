@@ -23,19 +23,13 @@ $@"<!DOCTYPE html>
 <html>
     <head>
         <style>
-            code {{
-                display: block;
-                background-color: #1E1E1E;
-                color: white;
-            }}
-
 { HtmlSyntaxHighlighter.GetCssStyles() }
         </style>
     </head>
     <body>
-        <code>
-            <pre>{syntaxHtml}</pre>  
-        </code>
+        <pre>
+            <code>{syntaxHtml}</code>  
+        </pre>
     </body>
 </html>";
 

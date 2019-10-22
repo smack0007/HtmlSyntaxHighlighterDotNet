@@ -36,9 +36,9 @@ namespace HtmlSyntaxHighlighterDotNet
 
         public void Highlight(SyntaxNode node)
         {
-            _buffer.Append($"<span class=\"{Css.RootClass}\">");
+            _buffer.Append($"<div class=\"{Css.RootClass}\">");
             Visit(node);
-            _buffer.Append("</span>");
+            _buffer.Append("</div>");
         }
 
         public override void VisitArgument(ArgumentSyntax node)
