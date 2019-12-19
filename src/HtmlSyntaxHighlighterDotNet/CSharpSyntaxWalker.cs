@@ -8,6 +8,11 @@ namespace HtmlSyntaxHighlighterDotNet
 {
     internal class CSharpSyntaxWalker : Microsoft.CodeAnalysis.CSharp.CSharpSyntaxWalker
     {
+        private static readonly string[] s_operatorKeywords = new string[]
+        {
+            "nameof"
+        };
+
         private static readonly string[] s_statementKeywords = new string[]
         {
             "do",
@@ -204,8 +209,17 @@ namespace HtmlSyntaxHighlighterDotNet
                 }
                 else if (_stack.Peek(SyntaxElement.Invocation, 1))
                 {
-                    _buffer.Append(Css.ClassSeperator);
-                    _buffer.Append(Css.InvocationClass);
+                    if (s_operatorKeywords.Contains(token.ValueText))
+                    {
+                        // Remove the identifier class and add the keyword class.
+                        _buffer.Length -= Css.IdentifierClass.Length;
+                        _buffer.Append(Css.KeywordClass);
+                    }
+                    else
+                    {
+                        _buffer.Append(Css.ClassSeperator);
+                        _buffer.Append(Css.InvocationClass);
+                    }
                 }
                 else if (_stack.Peek(SyntaxElement.MemberAccessExpression, 1))
                 {
