@@ -194,7 +194,8 @@ namespace HtmlSyntaxHighlighterDotNet
                     _buffer.Append(Css.ClassSeperator);
                     _buffer.Append(Css.MethodClass);
                 }
-                else if (_stack.Peek(SyntaxElement.ClassDeclaration, 1) ||
+                else if (_stack.Peek(SyntaxElement.ClassDeclaration) ||
+                         _stack.Peek(SyntaxElement.ClassDeclaration, 1) ||
                          _stack.Peek(SyntaxElement.ExplicitInterfaceSpecifier, 1) ||
                          _stack.Peek(SyntaxElement.ObjectCreationExpression, 1) ||
                          _stack.Peek(SyntaxElement.Parameter, 1))

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Reflection;
 using HtmlSyntaxHighlighterDotNet;
 
@@ -12,7 +13,12 @@ namespace HelloWorld
             var assemblyDirectoryName = Path.GetDirectoryName(assemblyLocation) ?? "";
             var samplesPath = Path.Combine(assemblyDirectoryName, "samples");
 
-            foreach (var file in Directory.EnumerateFiles(samplesPath, "*.cs", SearchOption.TopDirectoryOnly))
+            var files = Directory.EnumerateFiles(samplesPath, "*.cs", SearchOption.TopDirectoryOnly);
+
+            // Next line is used when debugging.
+            //files = files.Where(x => x.EndsWith("Inheritance.cs"));
+
+            foreach (var file in files)
             {
                 var source = File.ReadAllText(file);
 

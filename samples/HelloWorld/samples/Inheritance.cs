@@ -1,12 +1,13 @@
-﻿class Base<T>
+﻿class MyClass
+{
+}
+
+class Parent<T>
 {
     public void WriteClassName() => Console.WriteLine(typeof(T).Name);
 }
 
-class Foo : Base<Foo>
+class Child : Parent<MyClass>
 {
 }
 
-class Bar
-{
-}
