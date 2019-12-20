@@ -17,6 +17,7 @@
         ObjectCreationExpression,
         Parameter,
         PropertyDeclaration,
+        TypeOfExpression,
         UsingDirective,
         VariableDeclarator,
     }

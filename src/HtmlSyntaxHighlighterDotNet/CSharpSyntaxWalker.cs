@@ -151,6 +151,13 @@ namespace HtmlSyntaxHighlighterDotNet
             _stack.Pop();
         }
 
+        public override void VisitTypeOfExpression(TypeOfExpressionSyntax node)
+        {
+            _stack.Push(SyntaxElement.TypeOfExpression);
+            base.VisitTypeOfExpression(node);
+            _stack.Pop();
+        }
+
         public override void VisitUsingDirective(UsingDirectiveSyntax node)
         {
             _stack.Push(SyntaxElement.UsingDirective);
@@ -198,7 +205,8 @@ namespace HtmlSyntaxHighlighterDotNet
                          _stack.Peek(SyntaxElement.ClassDeclaration, 1) ||
                          _stack.Peek(SyntaxElement.ExplicitInterfaceSpecifier, 1) ||
                          _stack.Peek(SyntaxElement.ObjectCreationExpression, 1) ||
-                         _stack.Peek(SyntaxElement.Parameter, 1))
+                         _stack.Peek(SyntaxElement.Parameter, 1) ||
+                         _stack.Peek(SyntaxElement.TypeOfExpression, 1))
                 {
                     _buffer.Append(Css.ClassSeperator);
                     _buffer.Append(Css.TypeClass);
